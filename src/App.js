@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from "react";
+import React, { useState, useEffect} from "react";
 import axios from "axios"
 import "./index.css"
 import {Api_token} from "./token"
@@ -12,7 +12,6 @@ function App() {
   const [ent, setEnt] = useState(0)
   const [lat, setLat] = useState(0)
   const [long, setLong] = useState(0)
-  const [bg, setBg] = useState("")
 
   function componentDidMount() {
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -37,9 +36,9 @@ function App() {
     componentDidMount()
     const handle = async () => {
       if (city === '') {
-        var res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=6445e7a335b84dad8723efbbacfece73&units=metric`)
+        var res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${key}&units=metric`)
       } else {
-        var res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=6445e7a335b84dad8723efbbacfece73&units=metric`)
+        var res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`)
       }
       setCity('')
       setApidata(res.data)
