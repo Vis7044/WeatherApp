@@ -1,9 +1,10 @@
 import React, { useState, useEffect, Component } from "react";
 import axios from "axios"
 import "./index.css"
+import {Api_token} from "./token"
 
 
-const key = "6445e7a335b84dad8723efbbacfece73"
+const key = Api_token
 
 function App() {
   const [city, setCity] = useState("")
