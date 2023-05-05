@@ -10,7 +10,7 @@ body {
 }
 
 .App {
-    background-image: url('../assets/sunrise.jpg');
+    background-image: url('../assets/cold.jpg');
     background-size: cover;
     background-position: bottom;
     transition: 0.4 ease-out;
