@@ -1,7 +1,7 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios"
 import "./index.css"
-import {Api_token} from "./token"
+import { Api_token } from "./token"
 
 
 const key = Api_token
@@ -17,8 +17,6 @@ function App() {
     navigator.geolocation.getCurrentPosition(function (position) {
       setLat(position.coords.latitude)
       setLong(position.coords.longitude)
-      console.log(lat)
-      console.log(long)
     });
   }
 
@@ -42,7 +40,6 @@ function App() {
       }
       setCity('')
       setApidata(res.data)
-      console.log(apidata)
     }
     handle()
   }, [ent, lat])
@@ -52,6 +49,7 @@ function App() {
       setEnt(ent + 1)
     }
   }
+  console.log(apidata)
 
   const dateBuilder = (d) => {
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -68,7 +66,7 @@ function App() {
 
 
   return (
-    <div className={Object.keys(apidata).length>0?(apidata.main.temp>20)?"App warm":"App":"App"}>
+    <div className={Object.keys(apidata).length > 0 ? (apidata.main.temp > 20) ? "App warm" : "App" : "App"}>
       <main>
         <div className="search-box">
           <input
@@ -84,17 +82,17 @@ function App() {
 
         <div className="location-box">
           <div className="location">
-            {Object.keys(apidata).length>0?apidata.name:"Enter City"}
+            {Object.keys(apidata).length > 0 ? apidata.name : "Locating City.."}
           </div>
           <div className="date">{dateBuilder(new Date())}</div>
         </div>
 
         <div className="weather-box">
           <div className="temperature">
-            {Object.keys(apidata).length>0?Math.round(apidata.main.temp) + "°C":""}
+            {Object.keys(apidata).length > 0 ? Math.round(apidata.main.temp) + "°C" : ""}
           </div>
           <div className="weather">
-            {Object.keys(apidata).length>0?apidata.weather[0].description:""}
+            {Object.keys(apidata).length > 0 ? apidata.weather[0].description : ""}
 
           </div>
         </div>
